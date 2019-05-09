@@ -1,4 +1,5 @@
-﻿#!/usr/bin/env bash
+﻿#!/bin/bash
+#
 # Auto install zabbix4.0.2 Server
 # System Required:  CentOS 7+
 # Copyright (C) 2018

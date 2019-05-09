@@ -1,10 +1,4 @@
-﻿#!/bin/bash
-#
-# Auto install zabbix4.0.2 Server
-# System Required:  CentOS 7+
-# Copyright (C) 2018
-#
-
+x4.0脚本
 err_echo(){
     echo -e "\033[41;37m[Error]: $1 \033[0m"
     exit 1
@@ -355,15 +349,15 @@ function install_zabbix(){
     cp /usr/local/zabbix/etc/zabbix_server.conf /usr/local/zabbix/etc/zabbix_server.conf.bak
     echo "" >/usr/local/zabbix/etc/zabbix_server.conf
 
-	cat <<"EOF" > /usr/local/zabbix/etc/zabbix_server.conf
-	LogFile=/tmp/zabbix_server.log
-	DBHost=127.0.0.1
-	DBName=zabbix
-	DBUser=zabbix
-	DBPassword=zabbix
-	DBPort=3306
-	Timeout=30
-	EOF
+cat <<"EOF" > /usr/local/zabbix/etc/zabbix_server.conf
+LogFile=/tmp/zabbix_server.log
+DBHost=127.0.0.1
+DBName=zabbix
+DBUser=zabbix
+DBPassword=zabbix
+DBPort=3306
+Timeout=30
+EOF
 
     info_echo "开始导入mysql数据"
     mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-4.0.2/database/mysql/schema.sql 
@@ -402,7 +396,7 @@ function main(){
     install_package
     download_install_package
     install_php
-    install_ldap
+	install_ldap
     install_nginx
     install_mysql
     install_jdk
@@ -411,3 +405,4 @@ function main(){
 }
 
 main
+
